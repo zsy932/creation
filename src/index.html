@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>餐厅菜品推荐系统</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- 引入外部样式文件 -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-neutral-50 min-h-screen flex flex-col">
+  
+  <header class="bg-white border-b border-neutral-200 sticky top-0 z-30">
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <h1 class="text-lg font-medium text-neutral-800">上午好，张明</h1>
+        <span class="text-sm text-neutral-500">2025年11月23日 星期日</span>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-neutral-200 transition-custom">
+          <i class="ri-notification-3-line"></i>
+        </button>
+        <div class="w-10 h-10 rounded-full bg-neutral-200 overflow-hidden">
+          <img class="w-full h-full object-cover" alt="用户头像" src="https://picsum.photos/id/64/200/200">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-4">
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold text-neutral-800">餐厅菜品推荐系统</h2>
+    </div>
+    
+    <!-- Tab 导航 -->
+    <div class="flex border-b border-neutral-200 mb-4">
+      <button id="smart-tab" class="px-5 py-3 text-primary border-b-2 border-primary font-medium">
+        <span class="text-sm">智能推荐</span>
+      </button>
+      <button id="hutong-tab" class="px-5 py-3 text-neutral-500 hover:text-primary transition-custom">
+        <span class="text-sm font-medium">胡同小馆</span>
+      </button>
+      <button id="xiaozhen-tab" class="px-5 py-3 text-neutral-500 hover:text-primary transition-custom">
+        <span class="text-sm font-medium">攸州小镇</span>
+      </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div id="content-area">
+      <!-- 智能推荐页面内容 -->
+      <div id="smart-content"></div>
+      
+      <!-- 胡同小馆页面内容 -->
+      <div id="hutong-content" style="display: none;"></div>
+      
+      <!-- 攸州小镇页面内容 -->
+      <div id="xiaozhen-content" style="display: none;"></div>
+    </div>
+  </main>
+
+  <!-- 引入外部JavaScript文件 -->
+  <script src="js/app.js"></script>
+</body>
+</html>

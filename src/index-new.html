@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>餐厅菜品推荐系统</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            success: '#10B981',
+            danger: '#EF4444',
+            warning: '#F59E0B',
+            info: '#06B6D4'
+          },
+          boxShadow: {
+            'card': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+            'hover': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-neutral-50 min-h-screen flex flex-col">
+  
+  <header class="bg-white border-b border-neutral-200 sticky top-0 z-30">
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <h1 class="text-lg font-medium text-neutral-800">上午好，张明</h1>
+        <span class="text-sm text-neutral-500">2025年11月23日 星期日</span>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 hover:bg-neutral-200 transition-custom">
+          <i class="ri-notification-3-line"></i>
+        </button>
+        <div class="w-10 h-10 rounded-full bg-neutral-200 overflow-hidden">
+          <img class="w-full h-full object-cover" alt="用户头像" src="https://picsum.photos/id/64/200/200">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-semibold text-neutral-800">餐厅菜品推荐系统</h2>
+    </div>
+    
+    <!-- Tab 导航 -->
+    <div class="flex border-b border-neutral-200 mb-8">
+      <button id="smart-tab" class="px-5 py-3 text-primary border-b-2 border-primary font-medium">
+        <span class="text-sm">智能推荐</span>
+      </button>
+      <button id="hutong-tab" class="px-5 py-3 text-neutral-500 hover:text-primary transition-custom">
+        <span class="text-sm font-medium">胡同小馆</span>
+      </button>
+      <button id="xiaozhen-tab" class="px-5 py-3 text-neutral-500 hover:text-primary transition-custom">
+        <span class="text-sm font-medium">攸州小镇</span>
+      </button>
+    </div>
+
+    <!-- 内容区域 -->
+    <div id="content-area">
+      <!-- 智能推荐页面内容 -->
+      <div id="smart-content">
+        <!-- 筛选条件 -->
+        <div class="bg-white rounded-xl border border-neutral-200 shadow-card p-6 mb-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 口味标签和按钮区域 -->
+            <div class="flex items-end justify-between">
+              <div class="flex-1">
+                <label class="block text-sm font-medium text-neutral-700 mb-3">口味标签</label>
+                <div class="flex gap-2 whitespace-nowrap overflow-x-auto pb-2">
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">开胃</button>
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">清淡</button>
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">减脂</button>
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">滋补</button>
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">套餐</button>
+                  <button class="bg-neutral-100 text-neutral-700 text-xs px-3 py-1.5 rounded-full hover:bg-green-50 transition-custom">想尝鲜？</button>
+                </div>
+              </div>
+              <div class="ml-6">
+                <button class="flex items-center bg-green-100 hover:bg-green-200 text-green-700 px-4 py-2 rounded-lg transition-custom whitespace-nowrap">
+                  <i class="ri-refresh-line mr-2"></i>
+                  <span class="text-sm font-medium">智能推荐</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 推荐餐厅列表 -->
+        <div class="mb-8">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-lg font-semibold text-neutral-800">为你推荐的餐厅</h3>
+            <button class="text-green-600 text-sm font-medium flex items-center hover:underline">
+              <span>查看全部</span>
+              <i class="ri-arrow-right-s-line ml-1.5"></i>
+            </button>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 湘悦楼 -->
+            <div class="bg-white rounded-xl border border-neutral-200 shadow-card overflow-hidden hover:shadow-hover transition-custom">
+              <div class="w-full h-40 overflow-hidden">
+                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="湘悦楼餐厅" src="https://picsum.photos/id/292/400/300">
+              </div>
+              
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-neutral-800 font-semibold">湘悦楼</h4>
+                  <div class="flex items-center text-neutral-500 text-xs">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>500米</span>
+                  </div>
+                </div>
+                
+                <p class="text-neutral-500 text-sm mb-4">人均 ¥85 | 湘菜 | 营业中</p>
+                
+                <h5 class="text-neutral-700 text-sm font-medium mb-2">推荐菜品</h5>
+                
+                <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2 mb-4">
+                  <div class="min-w-[112px]">
+                    <div class="w-full h-24 rounded-lg overflow-hidden mb-2">
+                      <img class="w-full h-full object-cover" alt="剁椒鱼头" src="https://picsum.photos/id/1080/200/200">
+                    </div>
+                    <p class="text-neutral-800 text-sm font-medium mb-1 truncate">剁椒鱼头</p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-green-600 text-sm font-bold">¥68</span>
+                      <div class="flex items-center text-neutral-500 text-xs">
+                        <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                        <span>420kcal</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="min-w-[112px]">
+                    <div class="w-full h-24 rounded-lg overflow-hidden mb-2">
+                      <img class="w-full h-full object-cover" alt="麻婆豆腐" src="https://picsum.photos/id/102/200/200">
+                    </div>
+                    <p class="text-neutral-800 text-sm font-medium mb-1 truncate">麻婆豆腐</p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-green-600 text-sm font-bold">¥28</span>
+                      <div class="flex items-center text-neutral-500 text-xs">
+                        <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                        <span>310kcal</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <button class="w-full py-2 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-custom">
+                  查看完整菜单
+                </button>
+              </div>
+            </div>
+            
+            <!-- 沪上小馆 -->
+            <div class="bg-white rounded-xl border border-neutral-200 shadow-card overflow-hidden hover:shadow-hover transition-custom">
+              <div class="w-full h-40 overflow-hidden">
+                <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="沪上小馆餐厅" src="https://picsum.photos/id/431/400/300">
+              </div>
+              
+              <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-neutral-800 font-semibold">沪上小馆</h4>
+                  <div class="flex items-center text-neutral-500 text-xs">
+                    <i class="ri-map-pin-line mr-1"></i>
+                    <span>800米</span>
+                  </div>
+                </div>
+                
+                <p class="text-neutral-500 text-sm mb-4">人均 ¥75 | 本帮菜 | 营业中</p>
+                
+                <h5 class="text-neutral-700 text-sm font-medium mb-2">推荐菜品</h5>
+                
+                <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2 mb-4">
+                  <div class="min-w-[112px]">
+                    <div class="w-full h-24 rounded-lg overflow-hidden mb-2">
+                      <img class="w-full h-full object-cover" alt="清蒸鲈鱼" src="https://picsum.photos/id/1080/200/200">
+                    </div>
+                    <p class="text-neutral-800 text-sm font-medium mb-1 truncate">清蒸鲈鱼</p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-green-600 text-sm font-bold">¥88</span>
+                      <div class="flex items-center text-neutral-500 text-xs">
+                        <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                        <span>320kcal</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="min-w-[112px]">
+                    <div class="w-full h-24 rounded-lg overflow-hidden mb-2">
+                      <img class="w-full h-full object-cover" alt="红烧肉" src="https://picsum.photos/id/292/200/200">
+                    </div>
+                    <p class="text-neutral-800 text-sm font-medium mb-1 truncate">红烧肉</p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-green-600 text-sm font-bold">¥68</span>
+                      <div class="flex items-center text-neutral-500 text-xs">
+                        <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                        <span>520kcal</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <button class="w-full py-2 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-custom">
+                  查看完整菜单
+                </button>
+              </div>
+            </div>
+            
+            <!-- 饮食小Tips -->
+            <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom">
+              <div class="h-16 flex items-center justify-center">
+                <h4 class="text-white text-lg font-bold text-center">饮食小Tips</h4>
+              </div>
+              
+              <div class="bg-white p-4">
+                <div class="space-y-3">
+                  <div class="bg-green-50 rounded-lg p-3">
+                    <h6 class="text-green-700 text-xs font-medium mb-1">🚫 食物相克</h6>
+                    <p class="text-neutral-600 text-xs leading-tight">牛奶 + 橙子 = 消化不良</p>
+                    <p class="text-neutral-500 text-xs leading-tight">牛奶中的蛋白质与橙子中的果酸结合会凝固，影响消化吸收</p>
+                  </div>
+                  
+                  <div class="bg-orange-50 rounded-lg p-3">
+                    <h6 class="text-orange-700 text-xs font-medium mb-1">💊 用药提醒</h6>
+                    <p class="text-neutral-600 text-xs leading-tight">头孢类药物 + 酒精 = 双硫仑反应</p>
+                    <p class="text-neutral-500 text-xs leading-tight">服药期间饮酒可能导致面部潮红、心悸、呼吸困难等严重反应</p>
+                  </div>
+                  
+                  <div class="bg-blue-50 rounded-lg p-3">
+                    <h6 class="text-blue-700 text-xs font-medium mb-1">🍎 健康建议</h6>
+                    <p class="text-neutral-600 text-xs leading-tight">降压药 + 西柚 = 血压过低</p>
+                    <p class="text-neutral-500 text-xs leading-tight">西柚会抑制药物代谢，导致药效增强，可能引起头晕、乏力等不适</p>
+                  </div>
+                </div>
+                
+                <button class="w-full py-1.5 bg-green-100 hover:bg-green-200 text-green-700 text-xs font-medium rounded-lg transition-custom mt-3">
+                  查看更多建议
+                </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 引入JavaScript -->
+  <script src="js/app.js"></script>
+</body>
+</html>
