@@ -23,7 +23,7 @@ tailwind.config = {
 const smartContentHTML = `
         <!-- 筛选条件 -->
         <div class="bg-white rounded-xl border border-neutral-200 shadow-card p-4 mb-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- 口味标签和按钮区域 -->
               <div class="flex items-center justify-between">
                 <div class="flex-1">
@@ -535,106 +535,177 @@ const hutongContentHTML = `
           </div>
         </section>
 
-        <!-- 全部菜品 -->
+        <!-- 智能推荐菜品组合 -->
         <section class="special-card">
           <div class="special-header">
-            <div class="special-title">全部菜品</div>
+            <div class="special-title">智能推荐菜品组合</div>
+            <div class="flex items-center space-x-2">
+              <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
+              <div class="flex space-x-2">
+                <button id="combo-recommend-btn" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                  <i class="ri-magic-line mr-1"></i>
+                  智能搭配
+                </button>
+                <button id="reset-filters-btn" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                  <i class="ri-refresh-line mr-1"></i>
+                  重置筛选
+                </button>
+              </div>
+            </div>
           </div>
           <div class="special-content">
-            <div class="dishes-table-container">
-              <table class="dishes-table">
-                <thead>
-                  <tr>
-                    <th>预览</th>
-                    <th>菜品名称</th>
-                    <th>价格</th>
-                    <th>能量值</th>
-                    <th>口味标签</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #60a5fa;">
-                        肉夹馍
-                      </div>
-                    </td>
-                    <td>老北京肉夹馍</td>
-                    <td>¥22</td>
-                    <td>320kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">主食</span>
-                        <span class="dish-tag">开胃</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #93c5fd;">
-                        水饺
-                      </div>
-                    </td>
-                    <td>三鲜水饺</td>
-                    <td>¥30</td>
-                    <td>280kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">主食</span>
-                        <span class="dish-tag">清淡</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #3b82f6;">
-                        香锅
-                      </div>
-                    </td>
-                    <td>麻辣香锅</td>
-                    <td>¥48</td>
-                    <td>520kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">爱辣</span>
-                        <span class="dish-tag">开胃</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #1d4ed8;">
-                        豆腐脑
-                      </div>
-                    </td>
-                    <td>嫩豆腐脑</td>
-                    <td>¥8</td>
-                    <td>120kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">早餐</span>
-                        <span class="dish-tag">清淡</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #2563eb;">
-                        煎饼
-                      </div>
-                    </td>
-                    <td>杂粮煎饼</td>
-                    <td>¥12</td>
-                    <td>280kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">早餐</span>
-                        <span class="dish-tag">主食</span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- 筛选条件 -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- 口味偏好 -->
+                <div>
+                  <label class="block text-sm font-medium text-blue-800 mb-3">口味偏好</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="taste-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-taste="开胃">🍃 开胃</button>
+                    <button class="taste-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-taste="清淡">💧 清淡</button>
+                    <button class="taste-filter bg-red-100 text-red-700 text-sm px-3 py-1.5 rounded-full hover:bg-red-200 transition-all duration-300 font-medium" data-taste="爱辣">🌶️ 爱辣</button>
+                  </div>
+                </div>
+                
+                <!-- 用餐人数 -->
+                <div>
+                  <label class="block text-sm font-medium text-blue-800 mb-3">用餐人数</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="1">👤 1人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="2">👥 2人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="3-4">👨‍👩‍👧 3-4人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="5+">👨‍👩‍👧‍👦 5人+</button>
+                  </div>
+                </div>
+                
+                <!-- 人均预算 -->
+                <div>
+                  <label class="block text-sm font-medium text-blue-800 mb-3">人均预算</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="budget-filter bg-green-100 text-green-700 text-sm px-3 py-1.5 rounded-full hover:bg-green-200 transition-all duration-300 font-medium" data-budget="20">💰 20元以下</button>
+                    <button class="budget-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-budget="30">💎 30元以下</button>
+                    <button class="budget-filter bg-purple-100 text-purple-700 text-sm px-3 py-1.5 rounded-full hover:bg-purple-200 transition-all duration-300 font-medium" data-budget="50">👑 50元以下</button>
+                  </div>
+                </div>
+          </div>
+          
+          
+            </div>
+            
+            <!-- 推荐结果 -->
+            <div id="combo-results" class="hidden">
+              <h4 class="text-lg font-semibold text-blue-800 mb-4 flex items-center">
+                <i class="ri-lightbulb-line mr-2"></i>
+                智能搭配方案
+              </h4>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div id="combo-menu" class="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-4">
+                  <!-- 菜单搭配将在这里显示 -->
+                </div>
+                <div id="combo-summary" class="bg-gradient-to-r from-orange-50 to-pink-50 border border-orange-200 rounded-lg p-4">
+                  <!-- 搭配总结将在这里显示 -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- 默认显示推荐搭配 -->
+            <div id="default-combos">
+              <h4 class="text-lg font-semibold text-blue-800 mb-4 flex items-center">
+                <i class="ri-star-line mr-2"></i>
+                精选搭配推荐
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- 经济实惠组合 -->
+                <div class="bg-white border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center justify-between mb-3">
+                    <h5 class="font-semibold text-gray-800">💰 经济套餐</h5>
+                    <div class="text-green-600 font-bold">¥25/人</div>
+                  </div>
+                  <div class="text-sm text-gray-600 mb-3">适合1-2人，性价比之选</div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                      <span>杂粮煎饼</span>
+                      <span class="text-blue-600">¥12</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>嫩豆腐脑</span>
+                      <span class="text-blue-600">¥8</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>三鲜水饺(3个)</span>
+                      <span class="text-blue-600">¥15</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-3 border-t border-gray-200">
+                    <div class="flex justify-between text-sm font-medium">
+                      <span>总计</span>
+                      <span class="text-green-600">¥35</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 经典搭配组合 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center justify-between mb-3">
+                    <h5 class="font-semibold text-gray-800">🥢 经典组合</h5>
+                    <div class="text-blue-600 font-bold">¥35/人</div>
+                  </div>
+                  <div class="text-sm text-gray-600 mb-3">适合2-3人，传统美味</div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                      <span>老北京肉夹馍</span>
+                      <span class="text-blue-600">¥22</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>酸辣汤</span>
+                      <span class="text-blue-600">¥15</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>拌小菜</span>
+                      <span class="text-blue-600">¥8</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-3 border-t border-gray-200">
+                    <div class="flex justify-between text-sm font-medium">
+                      <span>总计</span>
+                      <span class="text-blue-600">¥45</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- 家庭分享组合 -->
+                <div class="bg-white border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center justify-between mb-3">
+                    <h5 class="font-semibold text-gray-800">👨‍👩‍👧 家庭套餐</h5>
+                    <div class="text-purple-600 font-bold">¥40/人</div>
+                  </div>
+                  <div class="text-sm text-gray-600 mb-3">适合4-6人，丰富多样</div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                      <span>麻辣香锅</span>
+                      <span class="text-purple-600">¥48</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>北京炸酱面</span>
+                      <span class="text-purple-600">¥25</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>家常豆腐</span>
+                      <span class="text-purple-600">¥28</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span>米饭</span>
+                      <span class="text-purple-600">¥10</span>
+                    </div>
+                  </div>
+                  <div class="mt-3 pt-3 border-t border-gray-200">
+                    <div class="flex justify-between text-sm font-medium">
+                      <span>总计</span>
+                      <span class="text-purple-600">¥111</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>`;
@@ -1079,9 +1150,6 @@ document.addEventListener('DOMContentLoaded', function() {
   smartContent.innerHTML = smartContentHTML;
   contentInitialized.smart = true;
   
-  // 初始化标签交互
-  initTasteTags();
-
   // Tab切换函数
   function switchTab(activeTab, inactiveTabs) {
     // 激活当前tab
@@ -1122,6 +1190,7 @@ document.addEventListener('DOMContentLoaded', function() {
   hutongTab.addEventListener('click', () => {
     switchTab(hutongTab, [smartTab, xiaozhenTab]);
     showContent(hutongContent, hutongContentHTML, 'hutong');
+    setTimeout(initComboSystem, 100);
   });
 
   xiaozhenTab.addEventListener('click', () => {
@@ -1129,33 +1198,261 @@ document.addEventListener('DOMContentLoaded', function() {
     showContent(xiaozhenContent, xiaozhenContentHTML, 'xiaozhen');
   });
 
-  // 标签点击交互效果
-  function initTasteTags() {
-    const tags = document.querySelectorAll('#smart-content .flex.gap-2.whitespace-nowrap button');
-    tags.forEach(tag => {
-      tag.addEventListener('click', function() {
-        // 切换激活状态
-        if (this.textContent === '想尝鲜？') {
-          // "想尝鲜？"标签可以单独激活，不影响其他标签
-          this.classList.toggle('bg-green-100');
-          this.classList.toggle('text-green-600');
-          this.classList.toggle('bg-neutral-100');
-          this.classList.toggle('text-neutral-700');
+  // 智能搭配功能
+  function initComboSystem() {
+    const comboBtn = document.getElementById('combo-recommend-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const comboResults = document.getElementById('combo-results');
+    const defaultCombos = document.getElementById('default-combos');
+    const comboMenu = document.getElementById('combo-menu');
+    const comboSummary = document.getElementById('combo-summary');
+    const budgetFilters = document.querySelectorAll('.budget-filter');
+    const peopleFilters = document.querySelectorAll('.people-filter');
+    const tasteFilters = document.querySelectorAll('.taste-filter');
+
+    let selectedBudget = '';
+    let selectedPeople = '';
+    let selectedTastes = [];
+
+    // 菜品数据
+    const dishes = [
+      { name: '老北京肉夹馍', price: 22, tags: ['主食', '开胃'], portion: 'single' },
+      { name: '三鲜水饺', price: 30, tags: ['主食', '清淡'], portion: 'single' },
+      { name: '麻辣香锅', price: 48, tags: ['爱辣', '开胃'], portion: 'sharing' },
+      { name: '嫩豆腐脑', price: 8, tags: ['早餐', '清淡'], portion: 'single' },
+      { name: '杂粮煎饼', price: 12, tags: ['早餐', '主食'], portion: 'single' },
+      { name: '北京炸酱面', price: 25, tags: ['主食', '开胃'], portion: 'single' },
+      { name: '宫保鸡丁', price: 38, tags: ['爱辣', '开胃'], portion: 'sharing' },
+      { name: '家常豆腐', price: 28, tags: ['清淡', '主食'], portion: 'sharing' },
+      { name: '酸辣汤', price: 15, tags: ['清淡', '开胃'], portion: 'single' },
+      { name: '红烧肉', price: 45, tags: ['开胃'], portion: 'sharing' },
+      { name: '拌小菜', price: 8, tags: ['清淡'], portion: 'single' },
+      { name: '米饭', price: 10, tags: ['主食'], portion: 'sharing' }
+    ];
+
+    // 人均价格选择
+    budgetFilters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        budgetFilters.forEach(f => {
+          f.classList.remove('bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'text-white');
+          f.classList.add('text-green-700', 'text-yellow-700', 'text-purple-700');
+          if (f.dataset.budget === '20') f.classList.add('bg-green-100');
+          if (f.dataset.budget === '30') f.classList.add('bg-yellow-100');
+          if (f.dataset.budget === '50') f.classList.add('bg-purple-100');
+        });
+        
+        if (this.dataset.budget === '20') {
+          this.classList.remove('bg-green-100', 'text-green-700');
+          this.classList.add('bg-green-500', 'text-white');
+        } else if (this.dataset.budget === '30') {
+          this.classList.remove('bg-yellow-100', 'text-yellow-700');
+          this.classList.add('bg-yellow-500', 'text-white');
+        } else if (this.dataset.budget === '50') {
+          this.classList.remove('bg-purple-100', 'text-purple-700');
+          this.classList.add('bg-purple-500', 'text-white');
+        }
+        
+        selectedBudget = this.dataset.budget;
+      });
+    });
+
+    // 人数选择
+    peopleFilters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        peopleFilters.forEach(f => {
+          f.classList.remove('bg-orange-500', 'text-white');
+          f.classList.add('bg-orange-100', 'text-orange-700');
+        });
+        
+        this.classList.remove('bg-orange-100', 'text-orange-700');
+        this.classList.add('bg-orange-500', 'text-white');
+        
+        selectedPeople = this.dataset.people;
+      });
+    });
+
+    // 口味偏好选择
+    tasteFilters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        const taste = this.dataset.taste;
+        
+        if (this.classList.contains('bg-blue-500')) {
+          // 取消选择
+          this.classList.remove('bg-blue-500', 'text-white');
+          this.classList.add('bg-blue-100', 'text-blue-700');
+          selectedTastes = selectedTastes.filter(t => t !== taste);
         } else {
-          // 其他标签互斥
-          tags.forEach(t => {
-            if (t !== this && t.textContent !== '想尝鲜？') {
-              t.classList.remove('bg-green-100', 'text-green-600');
-              t.classList.add('bg-neutral-100', 'text-neutral-700');
-            }
-          });
-          // 切换当前标签状态
-          this.classList.toggle('bg-green-100');
-          this.classList.toggle('text-green-600');
-          this.classList.toggle('bg-neutral-100');
-          this.classList.toggle('text-neutral-700');
+          // 选择
+          this.classList.remove('bg-blue-100', 'text-blue-700');
+          this.classList.add('bg-blue-500', 'text-white');
+          selectedTastes.push(taste);
         }
       });
     });
+
+    // 智能搭配按钮
+    comboBtn.addEventListener('click', function() {
+      if (!selectedBudget || !selectedPeople) {
+        alert('请选择人均预算和用餐人数');
+        return;
+      }
+      
+      const combos = generateCombos(selectedBudget, selectedPeople, selectedTastes);
+      displayComboResults(combos);
+      comboResults.classList.remove('hidden');
+      defaultCombos.classList.add('hidden');
+    });
+
+    // 重置按钮
+    resetBtn.addEventListener('click', function() {
+      // 重置所有选择
+      budgetFilters.forEach(f => {
+        f.classList.remove('bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'text-white');
+        if (f.dataset.budget === '20') f.classList.add('bg-green-100', 'text-green-700');
+        if (f.dataset.budget === '30') f.classList.add('bg-yellow-100', 'text-yellow-700');
+        if (f.dataset.budget === '50') f.classList.add('bg-purple-100', 'text-purple-700');
+      });
+      
+      peopleFilters.forEach(f => {
+        f.classList.remove('bg-orange-500', 'text-white');
+        f.classList.add('bg-orange-100', 'text-orange-700');
+      });
+      
+      tasteFilters.forEach(f => {
+        f.classList.remove('bg-blue-500', 'text-white');
+        f.classList.add('bg-blue-100', 'text-blue-700');
+      });
+      
+      selectedBudget = '';
+      selectedPeople = '';
+      selectedTastes = [];
+      
+      comboResults.classList.add('hidden');
+      defaultCombos.classList.remove('hidden');
+    });
+
+    // 生成搭配组合
+    function generateCombos(budget, people, tastes) {
+      const budgetLimit = parseInt(budget);
+      const peopleCount = people === '1' ? 1 : 
+                         people === '2' ? 2 : 
+                         people === '3-4' ? 3.5 : 
+                         people === '5+' ? 5 : 1;
+      const totalBudget = budgetLimit * peopleCount;
+      
+      // 根据人数和口味筛选菜品
+      let filteredDishes = dishes.filter(dish => {
+        let tasteMatch = tastes.length === 0 || tastes.some(taste => dish.tags.includes(taste));
+        
+        // 人数适配
+        let peopleMatch = true;
+        if (people === '1') {
+          peopleMatch = dish.portion === 'single';
+        } else if (people === '3-4' || people === '5+') {
+          peopleMatch = dish.portion === 'sharing';
+        }
+        
+        return tasteMatch && peopleMatch && dish.price <= totalBudget;
+      });
+      
+      // 生成搭配方案
+      let combos = [];
+      
+      if (people === '1') {
+        // 单人套餐
+        const main = filteredDishes.find(d => dish.tags.includes('主食'));
+        const side = filteredDishes.find(d => !d.tags.includes('主食') && d.price <= 15);
+        
+        if (main) {
+          combos.push({
+            name: '单人精致套餐',
+            dishes: [main, side].filter(Boolean),
+            total: [main, side].filter(Boolean).reduce((sum, d) => sum + d.price, 0),
+            description: '适合单人用餐，营养均衡'
+          });
+        }
+      } else {
+        // 多人分享套餐
+        const sharingDishes = filteredDishes.filter(d => d.portion === 'sharing');
+        const singleDishes = filteredDishes.filter(d => d.portion === 'single');
+        
+        if (sharingDishes.length > 0) {
+          combos.push({
+            name: '分享套餐',
+            dishes: sharingDishes.slice(0, Math.min(3, sharingDishes.length)),
+            total: sharingDishes.slice(0, Math.min(3, sharingDishes.length)).reduce((sum, d) => sum + d.price, 0),
+            description: '适合多人分享，丰盛美味'
+          });
+        }
+      }
+      
+      return combos.length > 0 ? combos : [{ name: '推荐套餐', dishes: [], total: 0, description: '没有找到完全匹配的组合，建议调整筛选条件' }];
+    }
+
+    // 显示搭配结果
+    function displayComboResults(combos) {
+      comboMenu.innerHTML = `
+        <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
+          <i class="ri-menu-line mr-2"></i>
+          推荐菜单
+        </h5>
+        ${combos.map(combo => `
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-2">
+              <h6 class="font-medium text-gray-800">${combo.name}</h6>
+              <div class="text-green-600 font-bold">¥${combo.total}</div>
+            </div>
+            <div class="space-y-1">
+              ${combo.dishes.map(dish => `
+                <div class="flex justify-between text-sm">
+                  <span class="text-gray-700">${dish.name}</span>
+                  <span class="text-blue-600">¥${dish.price}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+      
+      comboSummary.innerHTML = `
+        <h5 class="font-semibold text-gray-800 mb-3 flex items-center">
+          <i class="ri-file-list-line mr-2"></i>
+          搭配总结
+        </h5>
+        <div class="space-y-3">
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-700">人均预算</span>
+            <span class="text-green-600">¥${selectedBudget}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-700">用餐人数</span>
+            <span class="text-orange-600">${selectedPeople}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-700">口味偏好</span>
+            <span class="text-blue-600">${selectedTastes.length > 0 ? selectedTastes.join('、') : '不限'}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-700">总预算</span>
+            <span class="text-purple-600">¥${combos[0].total}</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="text-gray-700">人均消费</span>
+            <span class="text-green-600">¥${Math.round(combos[0].total / (selectedPeople === '1' ? 1 : selectedPeople === '2' ? 2 : selectedPeople === '3-4' ? 3.5 : 5))}</span>
+          </div>
+          <div class="mt-3 pt-3 border-t border-gray-200">
+            <div class="text-xs text-gray-500 text-center">
+              ${combos[0].description}
+            </div>
+          </div>
+        </div>
+      `;
+    }
   }
+
+  // 初始化标签交互
+  initTasteTags();
+
+  // 初始化标签交互
+  initTasteTags();
 });
