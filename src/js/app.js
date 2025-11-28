@@ -38,7 +38,7 @@ const smartContentHTML = `
                   </div>
                 </div>
                 <div class="ml-6 flex-shrink-0 self-end pb-2">
-                  <button class="flex items-center bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap">
+                  <button class="hutong-theme flex items-center bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap">
                     <i class="ri-refresh-line mr-2"></i>
                     <span>智能推荐</span>
                   </button>
@@ -486,7 +486,7 @@ const hutongContentHTML = `
         </section>
 
         <!-- 特价菜品 -->
-        <section class="specials">
+        <section class="specials hutong-theme">
           <!-- 本周特价 -->
           <div class="special-card">
             <div class="special-header">
@@ -542,7 +542,7 @@ const hutongContentHTML = `
             <div class="flex items-center space-x-2">
               <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
               <div class="flex space-x-2">
-                <button id="combo-recommend-btn" class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                <button id="combo-recommend-btn" class="hutong-theme bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
                   <i class="ri-magic-line mr-1"></i>
                   智能搭配
                 </button>
@@ -571,10 +571,10 @@ const hutongContentHTML = `
                 <div>
                   <label class="block text-sm font-medium text-blue-800 mb-3">用餐人数</label>
                   <div class="flex gap-3 flex-wrap">
-                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="1">👤 1人</button>
-                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="2">👥 2人</button>
-                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="3-4">👨‍👩‍👧 3-4人</button>
-                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="5+">👨‍👩‍👧‍👦 5人+</button>
+                    <button class="people-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-people="1">👤 1人</button>
+                    <button class="people-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-people="2">👥 2人</button>
+                    <button class="people-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-people="3-4">👨‍👩‍👧 3-4人</button>
+                    <button class="people-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-people="5+">👨‍👩‍👧‍👦 5人+</button>
                   </div>
                 </div>
                 
@@ -582,9 +582,9 @@ const hutongContentHTML = `
                 <div>
                   <label class="block text-sm font-medium text-blue-800 mb-3">人均预算</label>
                   <div class="flex gap-3 flex-wrap">
-                    <button class="budget-filter bg-green-100 text-green-700 text-sm px-3 py-1.5 rounded-full hover:bg-green-200 transition-all duration-300 font-medium" data-budget="20">💰 20元以下</button>
-                    <button class="budget-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-budget="30">💎 30元以下</button>
-                    <button class="budget-filter bg-purple-100 text-purple-700 text-sm px-3 py-1.5 rounded-full hover:bg-purple-200 transition-all duration-300 font-medium" data-budget="50">👑 50元以下</button>
+                    <button class="budget-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-budget="20">💰 20元以下</button>
+                    <button class="budget-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-budget="30">💎 30元以下</button>
+                    <button class="budget-filter bg-blue-100 text-blue-700 text-sm px-3 py-1.5 rounded-full hover:bg-blue-200 transition-all duration-300 font-medium" data-budget="50">👑 50元以下</button>
                   </div>
                 </div>
           </div>
@@ -1023,7 +1023,7 @@ const xiaozhenContentHTML = `
         </section>
 
         <!-- 特价菜品 -->
-        <section class="specials">
+        <section class="specials xiaozhen-theme">
           <!-- 本周特价 -->
           <div class="special-card">
             <div class="special-header">
@@ -1080,7 +1080,7 @@ const xiaozhenContentHTML = `
             <div class="flex items-center space-x-2">
               <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
               <div class="flex space-x-2">
-                <button id="combo-recommend-btn" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                <button id="combo-recommend-btn" class="xiaozhen-theme bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
                   <i class="ri-magic-line mr-1"></i>
                   智能搭配
                 </button>
@@ -1099,9 +1099,9 @@ const xiaozhenContentHTML = `
                 <div>
                   <label class="block text-sm font-medium text-orange-800 mb-3">口味偏好</label>
                   <div class="flex gap-3 flex-wrap">
-                    <button class="taste-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-taste="爱辣">🌶️ 爱辣</button>
-                    <button class="taste-filter bg-red-100 text-red-700 text-sm px-3 py-1.5 rounded-full hover:bg-red-200 transition-all duration-300 font-medium" data-taste="招牌">🏆 招牌</button>
-                    <button class="taste-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-taste="酸甜">🍯 酸甜</button>
+                    <button class="xiaozhen-taste-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-taste="爱辣">🌶️ 爱辣</button>
+                    <button class="xiaozhen-taste-filter bg-red-100 text-red-700 text-sm px-3 py-1.5 rounded-full hover:bg-red-200 transition-all duration-300 font-medium" data-taste="招牌">🏆 招牌</button>
+                    <button class="xiaozhen-taste-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-taste="酸甜">🍯 酸甜</button>
                   </div>
                 </div>
                 
@@ -1327,6 +1327,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // 主题切换函数
+  function applyTheme(theme) {
+    document.body.className = document.body.className.replace(/\b(hutong-theme|xiaozhen-theme)\b/g, '');
+    if (theme) {
+      document.body.classList.add(theme);
+    }
+  }
+
   // 显示内容函数
   function showContent(targetElement, content, contentType) {
     // 隐藏所有内容
@@ -1349,17 +1357,20 @@ document.addEventListener('DOMContentLoaded', function() {
     switchTab(smartTab, [hutongTab, xiaozhenTab]);
     showContent(smartContent, null, 'smart');
     setTimeout(initTasteTags, 100);
+    applyTheme(''); // 智能推荐页面不使用特定主题
   });
 
   hutongTab.addEventListener('click', () => {
     switchTab(hutongTab, [smartTab, xiaozhenTab]);
     showContent(hutongContent, hutongContentHTML, 'hutong');
     setTimeout(initComboSystem, 100);
+    applyTheme('hutong-theme'); // 应用胡同小馆主题
   });
 
   xiaozhenTab.addEventListener('click', () => {
     switchTab(xiaozhenTab, [smartTab, hutongTab]);
     showContent(xiaozhenContent, xiaozhenContentHTML, 'xiaozhen');
+    applyTheme('xiaozhen-theme'); // 应用攸州小镇主题
   });
 
   // 智能搭配功能

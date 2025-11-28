@@ -26,6 +26,46 @@
   --danger: #EF4444;
   --warning: #F59E0B;
   --info: #06B6D4;
+  
+  /* 胡同小馆色系 - 蓝色系 */
+  --hutong-primary: #3B82F6;
+  --hutong-primary-light: #dbeafe;
+  --hutong-primary-dark: #1e40af;
+  --hutong-accent: #60a5fa;
+  --hutong-accent-light: #93c5fd;
+  --hutong-bg: #f0f9ff;
+  --hutong-border: #e0f2fe;
+  
+  /* 攸州小镇色系 - 橙色系 */
+  --xiaozhen-primary: #F59E0B;
+  --xiaozhen-primary-light: #fef3c7;
+  --xiaozhen-primary-dark: #d97706;
+  --xiaozhen-accent: #fbbf24;
+  --xiaozhen-accent-light: #fde68a;
+  --xiaozhen-bg: #fffbeb;
+  --xiaozhen-border: #fde68a;
+}
+
+/* 胡同小馆主题样式 */
+.hutong-theme {
+  --primary: var(--hutong-primary);
+  --primary-light: var(--hutong-primary-light);
+  --primary-dark: var(--hutong-primary-dark);
+  --accent: var(--hutong-accent);
+  --accent-light: var(--hutong-accent-light);
+  --bg-color: var(--hutong-bg);
+  --border-color: var(--hutong-border);
+}
+
+/* 攸州小镇主题样式 */
+.xiaozhen-theme {
+  --primary: var(--xiaozhen-primary);
+  --primary-light: var(--xiaozhen-primary-light);
+  --primary-dark: var(--xiaozhen-primary-dark);
+  --accent: var(--xiaozhen-accent);
+  --accent-light: var(--xiaozhen-accent-light);
+  --bg-color: var(--xiaozhen-bg);
+  --border-color: var(--xiaozhen-border);
 }
 
 /* 自定义阴影 */
@@ -35,6 +75,129 @@
 
 .shadow-hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* 主题样式应用 */
+.hutong-theme .special-header {
+  background: linear-gradient(135deg, #dbeafe, #93c5fd);
+  color: #1e40af;
+}
+
+.hutong-theme .week-special-item {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+}
+
+.hutong-theme .week-special-item.active {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa);
+  color: white;
+}
+
+.hutong-theme .dishes-table th {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.hutong-theme .dishes-table tr:hover {
+  background-color: #eff6ff;
+}
+
+.hutong-theme .dish-tag {
+  background: linear-gradient(135deg, #93c5fd, #60a5fa);
+  color: white;
+}
+
+.xiaozhen-theme .special-header {
+  background: linear-gradient(135deg, #fef3c7, #fbbf24);
+  color: #d97706;
+}
+
+.xiaozhen-theme .week-special-item {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+}
+
+.xiaozhen-theme .week-special-item.active {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+
+.xiaozhen-theme .dishes-table th {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.xiaozhen-theme .dishes-table tr:hover {
+  background-color: #fffbeb;
+}
+
+.xiaozhen-theme .dish-tag {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+
+/* 餐厅信息主题样式 */
+.hutong-theme .restaurant-name {
+  color: var(--hutong-primary);
+}
+
+.hutong-theme .detail-item i {
+  color: var(--hutong-accent);
+}
+
+.hutong-theme .restaurant-image-container::before {
+  background: linear-gradient(to bottom, var(--hutong-accent-light), var(--hutong-primary));
+}
+
+.xiaozhen-theme .restaurant-name {
+  color: var(--xiaozhen-primary);
+}
+
+.xiaozhen-theme .detail-item i {
+  color: var(--xiaozhen-accent);
+}
+
+.xiaozhen-theme .restaurant-image-container::before {
+  background: linear-gradient(to bottom, var(--xiaozhen-accent-light), var(--xiaozhen-primary));
+}
+
+/* 筛选按钮主题样式 */
+.hutong-theme .bg-blue-100 {
+  background-color: #dbeafe;
+}
+
+.hutong-theme .text-blue-700 {
+  color: #1e40af;
+}
+
+.hutong-theme .hover\:bg-blue-200:hover {
+  background-color: #bfdbfe;
+}
+
+.hutong-theme .bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.hutong-theme .text-white {
+  color: white;
+}
+
+.xiaozhen-theme .bg-orange-100 {
+  background-color: #fef3c7;
+}
+
+.xiaozhen-theme .text-orange-700 {
+  color: #d97706;
+}
+
+.xiaozhen-theme .hover\:bg-orange-200:hover {
+  background-color: #fde68a;
+}
+
+.xiaozhen-theme .bg-orange-500 {
+  background-color: #f59e0b;
+}
+
+.xiaozhen-theme .text-white {
+  color: white;
 }
 
 /* 菜品表格样式 */
@@ -61,6 +224,24 @@
   padding: 12px 16px;
   border-bottom: 1px solid #f1f5f9;
   font-size: 14px;
+}
+
+/* 表格容器主题样式 */
+.hutong-theme .dishes-table-container {
+  border: 1px solid var(--hutong-border);
+}
+
+.xiaozhen-theme .dishes-table-container {
+  border: 1px solid var(--xiaozhen-border);
+}
+
+/* 餐厅信息边框主题样式 */
+.hutong-theme .restaurant-image-container::before {
+  background: linear-gradient(to bottom, var(--hutong-accent-light), var(--hutong-primary));
+}
+
+.xiaozhen-theme .restaurant-image-container::before {
+  background: linear-gradient(to bottom, var(--xiaozhen-accent-light), var(--xiaozhen-primary));
 }
 
 .dishes-table tr:hover {
