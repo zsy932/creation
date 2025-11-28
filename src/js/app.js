@@ -1072,106 +1072,223 @@ const xiaozhenContentHTML = `
           </div>
         </section>
 
-        <!-- 全部菜品 -->
+        <!-- 智能推荐菜品组合 -->
         <section class="special-card">
           <div class="special-header">
-            <div class="special-title">全部菜品</div>
+            <div class="special-title">智能推荐菜品组合</div>
+            <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
+            <div class="flex items-center space-x-2">
+              <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
+              <div class="flex space-x-2">
+                <button id="combo-recommend-btn" class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                  <i class="ri-magic-line mr-1"></i>
+                  智能搭配
+                </button>
+                <button id="reset-filters-btn" class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm whitespace-nowrap">
+                  <i class="ri-refresh-line mr-1"></i>
+                  重置筛选
+                </button>
+              </div>
+            </div>
           </div>
           <div class="special-content">
-            <div class="dishes-table-container">
-              <table class="dishes-table">
-                <thead>
-                  <tr>
-                    <th>预览</th>
-                    <th>菜品名称</th>
-                    <th>价格</th>
-                    <th>能量值</th>
-                    <th>口味标签</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #fbbf24;">
-                        剁椒鱼头
-                      </div>
-                    </td>
-                    <td>剁椒鱼头</td>
-                    <td>¥58</td>
-                    <td>420kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">招牌</span>
-                        <span class="dish-tag">爱辣</span>
-                 </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #f59e0b;">
-                        口水鸡
-                      </div>
-                    </td>
-                    <td>口水鸡</td>
-                    <td>¥32</td>
-                    <td>280kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">凉菜</span>
-                        <span class="dish-tag">开胃</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #d97706;">
-                        毛血旺
-                      </div>
-                    </td>
-                    <td>毛血旺</td>
-                    <td>¥52</td>
-                    <td>380kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">爱辣</span>
-                        <span class="dish-tag">下饭</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #b45309;">
-                        辣子鸡
-                      </div>
-                    </td>
-                    <td>辣子鸡</td>
-                    <td>¥45</td>
-                    <td>350kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">爱辣</span>
-                        <span class="dish-tag">下酒</span>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="dish-preview-image" style="background-color: #92400e;">
-                        糖醋排骨
-                      </div>
-                    </td>
-                    <td>糖醋排骨</td>
-                    <td>¥48</td>
-                    <td>420kcal</td>
-                    <td>
-                      <div class="dish-tags">
-                        <span class="dish-tag">酸甜</span>
-                        <span class="dish-tag">下饭</span>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- 筛选条件 -->
+            <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-lg p-4 mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 口味偏好 -->
+                <div>
+                  <label class="block text-sm font-medium text-orange-800 mb-3">口味偏好</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="taste-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-taste="爱辣">🌶️ 爱辣</button>
+                    <button class="taste-filter bg-red-100 text-red-700 text-sm px-3 py-1.5 rounded-full hover:bg-red-200 transition-all duration-300 font-medium" data-taste="招牌">🏆 招牌</button>
+                    <button class="taste-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-taste="酸甜">🍯 酸甜</button>
+                  </div>
+                </div>
+                
+                <!-- 用餐人数 -->
+                <div>
+                  <label class="block text-sm font-medium text-orange-800 mb-3">用餐人数</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="1">👤 1人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="2">👥 2人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="3-4">👨‍👩‍👧 3-4人</button>
+                    <button class="people-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-people="5+">👨‍👩‍👧‍👦 5人+</button>
+                  </div>
+                </div>
+                
+                <!-- 人均预算 -->
+                <div>
+                  <label class="block text-sm font-medium text-orange-800 mb-3">人均预算</label>
+                  <div class="flex gap-3 flex-wrap">
+                    <button class="budget-filter bg-yellow-100 text-yellow-700 text-sm px-3 py-1.5 rounded-full hover:bg-yellow-200 transition-all duration-300 font-medium" data-budget="30">💰 30元以下</button>
+                    <button class="budget-filter bg-orange-100 text-orange-700 text-sm px-3 py-1.5 rounded-full hover:bg-orange-200 transition-all duration-300 font-medium" data-budget="50">💎 50元以下</button>
+                    <button class="budget-filter bg-red-100 text-red-700 text-sm px-3 py-1.5 rounded-full hover:bg-red-200 transition-all duration-300 font-medium" data-budget="80">👑 80元以下</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 推荐结果 -->
+            <div id="combo-results" class="hidden">
+              <h4 class="text-lg font-semibold text-orange-800 mb-4 flex items-center">
+                <i class="ri-lightbulb-line mr-2"></i>
+                智能搭配方案
+              </h4>
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div id="combo-menu" class="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-lg p-4">
+                  <!-- 菜单搭配将在这里显示 -->
+                </div>
+                <div id="combo-summary" class="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-lg p-4">
+                  <!-- 搭配总结将在这里显示 -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- 默认显示推荐搭配 -->
+            <div id="default-combos">
+              <h4 class="text-lg font-semibold text-orange-800 mb-4 flex items-center">
+                <i class="ri-star-line mr-2"></i>
+                精选搭配推荐
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- 剁椒鱼头 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      鱼头
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">剁椒鱼头</h5>
+                      <p class="text-orange-600 font-bold">¥58</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>420kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">招牌</span>
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
+                  </div>
+                </div>
+                
+                <!-- 口水鸡 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      鸡
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">口水鸡</h5>
+                      <p class="text-orange-600 font-bold">¥32</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>280kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">凉菜</span>
+                      <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 毛血旺 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      血旺
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">毛血旺</h5>
+                      <p class="text-orange-600 font-bold">¥52</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>380kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下饭</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
+                  </div>
+                </div>
+                
+                <!-- 辣子鸡 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      鸡块
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">辣子鸡</h5>
+                      <p class="text-orange-600 font-bold">¥45</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>350kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下酒</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 糖醋排骨 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      排骨
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">糖醋排骨</h5>
+                      <p class="text-orange-600 font-bold">¥48</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>420kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">酸甜</span>
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下饭</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 宫保虾球 -->
+                <div class="bg-white border border-orange-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 font-bold text-sm">
+                      虾球
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">宫保虾球</h5>
+                      <p class="text-orange-600 font-bold">¥68</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>450kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下酒</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>`;
