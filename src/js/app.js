@@ -615,94 +615,141 @@ const hutongContentHTML = `
                 精选搭配推荐
               </h4>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- 经济实惠组合 -->
-                <div class="bg-white border border-green-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div class="flex items-center justify-between mb-3">
-                    <h5 class="font-semibold text-gray-800">💰 经济套餐</h5>
-                    <div class="text-green-600 font-bold">¥25/人</div>
-                  </div>
-                  <div class="text-sm text-gray-600 mb-3">适合1-2人，性价比之选</div>
-                  <div class="space-y-2">
-                    <div class="flex justify-between text-sm">
-                      <span>杂粮煎饼</span>
-                      <span class="text-blue-600">¥12</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                      <span>嫩豆腐脑</span>
-                      <span class="text-blue-600">¥8</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                      <span>三鲜水饺(3个)</span>
-                      <span class="text-blue-600">¥15</span>
-                    </div>
-                  </div>
-                  <div class="mt-3 pt-3 border-t border-gray-200">
-                    <div class="flex justify-between text-sm font-medium">
-                      <span>总计</span>
-                      <span class="text-green-600">¥35</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <!-- 经典搭配组合 -->
+                <!-- 老北京肉夹馍 -->
                 <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div class="flex items-center justify-between mb-3">
-                    <h5 class="font-semibold text-gray-800">🥢 经典组合</h5>
-                    <div class="text-blue-600 font-bold">¥35/人</div>
-                  </div>
-                  <div class="text-sm text-gray-600 mb-3">适合2-3人，传统美味</div>
-                  <div class="space-y-2">
-                    <div class="flex justify-between text-sm">
-                      <span>老北京肉夹馍</span>
-                      <span class="text-blue-600">¥22</span>
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm">
+                      肉夹馍
                     </div>
-                    <div class="flex justify-between text-sm">
-                      <span>酸辣汤</span>
-                      <span class="text-blue-600">¥15</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                      <span>拌小菜</span>
-                      <span class="text-blue-600">¥8</span>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">老北京肉夹馍</h5>
+                      <p class="text-blue-600 font-bold">¥22</p>
                     </div>
                   </div>
-                  <div class="mt-3 pt-3 border-t border-gray-200">
-                    <div class="flex justify-between text-sm font-medium">
-                      <span>总计</span>
-                      <span class="text-blue-600">¥45</span>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>320kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">主食</span>
+                      <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
                     </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
                   </div>
                 </div>
                 
-                <!-- 家庭分享组合 -->
-                <div class="bg-white border border-purple-200 rounded-lg p-4 hover:shadow-md transition-shadow">
-                  <div class="flex items-center justify-between mb-3">
-                    <h5 class="font-semibold text-gray-800">👨‍👩‍👧 家庭套餐</h5>
-                    <div class="text-purple-600 font-bold">¥40/人</div>
-                  </div>
-                  <div class="text-sm text-gray-600 mb-3">适合4-6人，丰富多样</div>
-                  <div class="space-y-2">
-                    <div class="flex justify-between text-sm">
-                      <span>麻辣香锅</span>
-                      <span class="text-purple-600">¥48</span>
+                <!-- 三鲜水饺 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm">
+                      水饺
                     </div>
-                    <div class="flex justify-between text-sm">
-                      <span>北京炸酱面</span>
-                      <span class="text-purple-600">¥25</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                      <span>家常豆腐</span>
-                      <span class="text-purple-600">¥28</span>
-                    </div>
-                    <div class="flex justify-between text-sm">
-                      <span>米饭</span>
-                      <span class="text-purple-600">¥10</span>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">三鲜水饺</h5>
+                      <p class="text-blue-600 font-bold">¥30</p>
                     </div>
                   </div>
-                  <div class="mt-3 pt-3 border-t border-gray-200">
-                    <div class="flex justify-between text-sm font-medium">
-                      <span>总计</span>
-                      <span class="text-purple-600">¥111</span>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>280kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">主食</span>
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">清淡</span>
                     </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 麻辣香锅 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm">
+                      香锅
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">麻辣香锅</h5>
+                      <p class="text-blue-600 font-bold">¥48</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>520kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
+                      <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
+                  </div>
+                </div>
+                
+                <!-- 嫩豆腐脑 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm">
+                      豆腐脑
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">嫩豆腐脑</h5>
+                      <p class="text-blue-600 font-bold">¥8</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>120kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">早餐</span>
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">清淡</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 杂粮煎饼 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justifycenter text-blue-600 font-bold text-sm">
+                      煎饼
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">杂粮煎饼</h5>
+                      <p class="text-blue-600 font-bold">¥12</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>280kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">早餐</span>
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">主食</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
+                  </div>
+                </div>
+                
+                <!-- 北京炸酱面 -->
+                <div class="bg-white border border-blue-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-sm">
+                      炸酱面
+                    </div>
+                    <div class="flex-1">
+                      <h5 class="font-semibold text-gray-800">北京炸酱面</h5>
+                      <p class="text-blue-600 font-bold">¥25</p>
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+                    <span>450kcal</span>
+                    <div class="flex gap-1">
+                      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">主食</span>
+                      <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
+                    </div>
+                  </div>
+                  <div class="text-xs text-gray-500 mt-2">
+                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
                   </div>
                 </div>
               </div>
