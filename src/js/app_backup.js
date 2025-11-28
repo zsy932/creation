@@ -463,9 +463,14 @@ const hutongContentHTML = `
           </div>
           <div class="restaurant-content">
             <div class="restaurant-header">
-              <div class="flex items-center space-x-4">
-                <h1 class="restaurant-name">胡同小馆</h1>
-                <span class="text-neutral-600 text-base font-medium">传统北京风格餐厅，地道小吃和家常菜</span>
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                  <h1 class="restaurant-name">胡同小馆</h1>
+                  <span class="text-neutral-600 text-base font-medium">传统北京风格餐厅，地道小吃和家常菜</span>
+                </div>
+                <button class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap" onclick="showHutongMenuModal()">
+                  📋 完整菜品
+                </button>
               </div>
             </div>
             <div class="restaurant-details">
@@ -879,9 +884,14 @@ const xiaozhenContentHTML = `
           </div>
           <div class="restaurant-content">
             <div class="restaurant-header">
-              <div class="flex items-center space-x-4">
-                <h1 class="restaurant-name">攸州小镇</h1>
-                <span class="text-neutral-600 text-base font-medium">融合湖南风味的特色餐厅，正宗湘菜和创新菜品</span>
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                  <h1 class="restaurant-name">攸州小镇</h1>
+                  <span class="text-neutral-600 text-base font-medium">融合湖南风味的特色餐厅，正宗湘菜和创新菜品</span>
+                </div>
+                <button class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap" onclick="showXiaozhenMenuModal()">
+                  📋 完整菜品
+                </button>
               </div>
             </div>
             <div class="restaurant-details">
@@ -1057,6 +1067,289 @@ const xiaozhenContentHTML = `
             </div>
           </div>
         </section>`;
+        
+      case 'xiaozhen':
+        return `
+        <!-- 餐厅信息 -->
+        <section class="restaurant-info" style="height: 160px;">
+          <div class="restaurant-image-container">
+            <img src="https://picsum.photos/id/431/800/600" alt="攸州小镇餐厅环境" class="restaurant-image">
+          </div>
+          <div class="restaurant-content">
+            <div class="restaurant-header">
+              <div class="flex items-center justify-between w-full">
+                <div class="flex items-center space-x-4">
+                  <h1 class="restaurant-name">攸州小镇</h1>
+                  <span class="text-neutral-600 text-base font-medium">融合湖南风味的特色餐厅，正宗湘菜和创新菜品</span>
+                </div>
+                <button class="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap" onclick="showXiaozhenMenuModal()">
+                  📋 完整菜品
+                </button>
+              </div>
+            </div>
+            <div class="restaurant-details">
+              <div class="detail-item">
+                <i class="ri-map-pin-line"></i>
+                <span>公司西侧商业街2楼</span>
+              </div>
+              <div class="detail-item">
+                <i class="ri-time-line"></i>
+                <span>11:00-22:00</span>
+              </div>
+              <div class="detail-item">
+                <i class="ri-phone-line"></i>
+                <span>010-87654321</span>
+              </div>
+            </div>
+            <p class="restaurant-description">
+              正宗湘菜，麻辣鲜香。
+            </p>
+          </div>
+        </section>
+
+        <!-- 特价菜品 -->
+        <section class="specials">
+          <!-- 本周特价 -->
+          <div class="special-card" style="display: flex; align-items: flex-start;">
+            <!-- 左侧标题头图 -->
+            <div class="special-header" style="min-width: 120px; background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white; padding: 20px; border-radius: 10px 0 0 10px; display: flex; flex-direction: column; justify-content: center; text-align: center;">
+              <div class="special-title" style="font-size: 18px; font-weight: 700; margin-bottom: 4px;">本周特价</div>
+              <div class="special-date" style="font-size: 12px; opacity: 0.9;">11.25-12.01</div>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="special-content" style="flex: 1; padding: 12px 15px;">
+              <div class="week-specials">
+                <div class="week-special-item active">
+                  <div class="day">周一</div>
+                  <div class="dish-name">剁椒鱼头</div>
+                  <div class="dish-price">￥48</div>
+                </div>
+                <div class="week-special-item">
+                  <div class="day">周二</div>
+                  <div class="dish-name">口水鸡</div>
+                  <div class="dish-price">￥28</div>
+                </div>
+                <div class="week-special-item">
+                  <div class="day">周三</div>
+                  <div class="dish-name">毛血旺</div>
+                  <div class="dish-price">￥45</div>
+                </div>
+                <div class="week-special-item">
+                  <div class="day">周四</div>
+                  <div class="dish-name">辣子鸡</div>
+                  <div class="dish-price">￥38</div>
+                </div>
+                <div class="week-special-item">
+                  <div class="day">周五</div>
+                  <div class="dish-name">糖醋排骨</div>
+                  <div class="dish-price">￥42</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>`;
+
+      default:
+        return '';
+    }
+  }
+
+  // 渲染页面
+  function renderPage() {
+    const container = document.getElementById('restaurant-container');
+    if (container) {
+      container.innerHTML = getRestaurantHTML(currentRestaurant);
+    }
+  }
+
+  // 切换餐厅
+  function switchRestaurant(restaurant) {
+    currentRestaurant = restaurant;
+    
+    // 更新导航按钮状态
+    document.querySelectorAll('.nav-button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector(`[data-restaurant="${restaurant}"]`).classList.add('active');
+    
+    // 渲染页面
+    renderPage();
+  }
+
+  // 绑定导航按钮事件
+  document.querySelectorAll('.nav-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const restaurant = this.getAttribute('data-restaurant');
+      switchRestaurant(restaurant);
+    });
+  });
+
+  // 初始化页面
+  renderPage();
+});
+
+
+        <div id="xiaozhenMenuModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" style="backdrop-filter: blur(4px);">
+          <div class="bg-white rounded-xl shadow-2xl max-w-4xl max-h-[80vh] flex flex-col" style="width: 90vw;">
+            <div class="flex items-center justify-between p-6 border-b border-neutral-200" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: white;">
+              <h2 class="text-xl font-bold">攸州小镇 - 完整菜品</h2>
+              <button onclick="hideXiaozhenMenuModal()" class="text-white hover:text-yellow-200 transition-colors">
+                <i class="ri-close-line text-2xl"></i>
+              </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🐟</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">剁椒鱼头</span>
+                        <span class="text-orange-600 font-bold">¥58</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">招牌 | 爱辣</div>
+                      <div class="text-sm text-orange-500">420kcal</div>
+                    </div>
+                  </div>
+                </div>
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🐟</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">剁椒 fish头</span>
+                        <span class="text-orange-600 font-bold">¥58</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">招牌 | 爱辣</div>
+                      <div class="text-sm text-orange-500">420kcal</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🐔</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">口水鸡</span>
+                        <span class="text-orange-600 font-bold">¥32</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">凉菜 | 开胃</div>
+                      <div class="text-sm text-orange-500">280kcal</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🥘</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">毛血旺</span>
+                        <span class="text-orange-600 font-bold">¥52</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">爱辣 | 下饭</div>
+                      <div class="text-sm text-orange-500">380kcal</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🌶️</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">辣子鸡</span>
+                        <span class="text-orange-600 font-bold">¥45</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">爱辣 | 下酒</div>
+                      <div class="text-sm text-orange-500">350kcal</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-16 h-16 bg-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span class="text-orange-600 text-xl">🍖</span>
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium text-orange-700">糖醋排骨</span>
+                        <span class="text-orange-600 font-bold">¥48</span>
+                      </div>
+                      <div class="text-sm text-orange-600 mb-2">酸甜 | 下饭</div>
+                      <div class="text-sm text-orange-500">420kcal</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </section>`;
+    }
+  }
+
+  // 渲染页面
+  function renderPage() {
+    const container = document.getElementById('restaurant-container');
+    if (container) {
+      container.innerHTML = getRestaurantHTML(currentRestaurant);
+    }
+  }
+
+  // 切换餐厅
+  function switchRestaurant(restaurant) {
+    currentRestaurant = restaurant;
+    
+    // 更新导航按钮状态
+    document.querySelectorAll('.nav-button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector(`[data-restaurant="${restaurant}"]`).classList.add('active');
+    
+    // 渲染页面
+    renderPage();
+  }
+
+  // 绑定导航按钮事件
+  document.querySelectorAll('.nav-button').forEach(button => {
+    button.addEventListener('click', function() {
+      const restaurant = this.getAttribute('data-restaurant');
+      switchRestaurant(restaurant);
+    });
+  });
+
+  // 初始化页面
+  renderPage();
+});
+
+// 完整菜品弹窗功能 - 定义在全局作用域
+window.showHutongMenuModal = function() {
+  const modal = document.getElementById('hutongMenuModal');
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.hideHutongMenuModal = function() {
+  const modal = document.getElementById('hutongMenuModal');
+  if (modal) modal.classList.add('hidden');
+};
+
+window.showXiaozhenMenuModal = function() {
+  const modal = document.getElementById('xiaozhenMenuModal');
+  if (modal) modal.classList.remove('hidden');
+};
+
+window.hideXiaozhenMenuModal = function() {
+  const modal = document.getElementById('xiaozhenMenuModal');
+  if (modal) modal.classList.add('hidden');
+};
 
 // 页面初始化和事件处理
 document.addEventListener('DOMContentLoaded', function() {
