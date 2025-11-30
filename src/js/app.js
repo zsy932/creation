@@ -1023,9 +1023,6 @@ const xiaozhenContentHTML = `
                 <span>010-87654321</span>
               </div>
             </div>
-            <p class="restaurant-description">
-              环境时尚温馨。
-            </p>
           </div>
         </section>
 
@@ -1083,7 +1080,6 @@ const xiaozhenContentHTML = `
         <section class="special-card">
           <div class="special-header">
             <div class="special-title">智能推荐菜品组合</div>
-            <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
             <div class="flex items-center space-x-2">
               <div class="text-sm opacity-90">根据人均价格 + 人数 + 口味智能搭配</div>
               <div class="flex space-x-2">
