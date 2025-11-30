@@ -215,8 +215,8 @@ const hutongContentHTML = `
           
           .restaurant-image-container {
             flex-shrink: 0;
-            width: 300px;
-            height: 160px;
+            width: 320px;
+            height: 180px;
             position: relative;
           }
           
@@ -243,11 +243,15 @@ const hutongContentHTML = `
             
             .restaurant-image-container {
               width: 100%;
-              height: 200px;
+              height: 220px;
             }
             
             .restaurant-image {
               border-radius: 15px 15px 0 0;
+              height: 220px;
+              object-fit: cover;
+              object-position: top center;
+              background-color: #f8fafc;
             }
             
             .restaurant-image-container::before {
@@ -297,9 +301,12 @@ const hutongContentHTML = `
           
           .restaurant-image {
             width: 100%;
-            height: 160px;
+            height: 180px;
             border-radius: 15px 0 0 15px;
             object-fit: cover;
+            object-position: top center;
+            background-color: #f8fafc;
+            box-shadow: inset 0 0 0 1px #e5e7eb;
           }
           
           .specials {
@@ -457,9 +464,9 @@ const hutongContentHTML = `
         </style>
         
         <!-- 餐厅信息 -->
-        <section class="restaurant-info" style="height: 160px;">
+        <section class="restaurant-info" style="height: 180px;">
           <div class="restaurant-image-container">
-            <img src="https://picsum.photos/id/326/800/600" alt="胡同小馆餐厅环境" class="restaurant-image">
+            <img src="https://p4-plat.wsukwai.com/kos/nlav10734/hutong.jpg" alt="胡同小馆餐厅环境" class="restaurant-image" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-blue-600 font-bold text-lg\'>胡同小馆</div>';">
           </div>
           <div class="restaurant-content">
             <div class="restaurant-header">
@@ -991,9 +998,9 @@ const xiaozhenContentHTML = `
         </style>
         
         <!-- 餐厅信息 -->
-        <section class="restaurant-info" style="height: 160px;">
+        <section class="restaurant-info xiaozhen-theme" style="height: 180px;">
           <div class="restaurant-image-container">
-            <img src="https://picsum.photos/id/504/800/600" alt="攸州小镇餐厅环境" class="restaurant-image">
+            <img src="https://p4-plat.wsukwai.com/kos/nlav10734/youzhou.png" alt="攸州小镇餐厅环境" class="restaurant-image" loading="lazy" style="object-fit: cover; object-position: top center; background-color: #f8fafc;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-orange-600 font-bold text-lg\'>攸州小镇</div>';">
           </div>
           <div class="restaurant-content">
             <div class="restaurant-header">
