@@ -33,7 +33,8 @@ const smartContentHTML = `
                     <button class="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-sm px-4 py-2 rounded-full hover:from-blue-200 hover:to-blue-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">💧 清淡</button>
                     <button class="bg-gradient-to-r from-pink-100 to-pink-200 text-pink-700 text-sm px-4 py-2 rounded-full hover:from-pink-200 hover:to-pink-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🏃‍♀️ 减脂</button>
                     <button class="bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 text-sm px-4 py-2 rounded-full hover:from-orange-200 hover:to-orange-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🍯 滋补</button>
-                    <button class="bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 text-sm px-4 py-2 rounded-full hover:from-purple-200 hover:to-purple-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🍱 套餐</button>
+                    <button class="bg-gradient-to-r from-red-100 to-red-200 text-red-700 text-sm px-4 py-2 rounded-full hover:from-red-200 hover:to-red-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🌶️ 爱辣</button>
+                    <button class="bg-gradient-to-r from-amber-100 to-amber-200 text-amber-700 text-sm px-4 py-2 rounded-full hover:from-amber-200 hover:to-amber-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🥩 无肉不欢</button>
                     <button class="bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-700 text-sm px-4 py-2 rounded-full hover:from-yellow-200 hover:to-yellow-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">✨ 想尝鲜？</button>
                   </div>
                 </div>
@@ -640,9 +641,7 @@ const hutongContentHTML = `
                       <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 三鲜水饺 -->
@@ -663,9 +662,7 @@ const hutongContentHTML = `
                       <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">清淡</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 麻辣香锅 -->
@@ -686,9 +683,7 @@ const hutongContentHTML = `
                       <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 嫩豆腐脑 -->
@@ -709,9 +704,7 @@ const hutongContentHTML = `
                       <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">清淡</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 杂粮煎饼 -->
@@ -732,9 +725,7 @@ const hutongContentHTML = `
                       <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs">主食</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 北京炸酱面 -->
@@ -755,9 +746,7 @@ const hutongContentHTML = `
                       <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -1172,9 +1161,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">爱辣</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 口水鸡 -->
@@ -1195,9 +1182,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">开胃</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 毛血旺 -->
@@ -1218,9 +1203,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下饭</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full">分享装</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 辣子鸡 -->
@@ -1241,9 +1224,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下酒</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 糖醋排骨 -->
@@ -1264,9 +1245,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下饭</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
                 
                 <!-- 宫保虾球 -->
@@ -1287,9 +1266,7 @@ const xiaozhenContentHTML = `
                       <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">下酒</span>
                     </div>
                   </div>
-                  <div class="text-xs text-gray-500 mt-2">
-                    <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full">单人份</span>
-                  </div>
+                  
                 </div>
               </div>
             </div>

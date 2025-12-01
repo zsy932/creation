@@ -53,15 +53,499 @@
 
     <!-- 内容区域 -->
     <div id="content-area">
-      <!-- 智能推荐页面内容 -->
-      <div id="smart-content"></div>
+    <!-- 智能推荐页面内容 -->
+    <div id="smart-content">
+      <style>
+        /* 从原始index.html中提取的所有样式 */
+        @layer utilities {
+          .content-auto {
+            content-visibility: auto;
+          }
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+          .text-shadow-sm {
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+          }
+          .transition-custom {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+        }
+
+        /* Tailwind配置 */
+        :root {
+          --primary: #3B82F6;
+          --success: #10B981;
+          --danger: #EF4444;
+          --warning: #F59E0B;
+          --info: #06B6D4;
+          
+          /* 胡同小馆色系 - 蓝色系 */
+          --hutong-primary: #3B82F6;
+          --hutong-primary-light: #dbeafe;
+          --hutong-primary-dark: #1e40af;
+          --hutong-accent: #60a5fa;
+          --hutong-accent-light: #93c5fd;
+          --hutong-bg: #f0f9ff;
+          --hutong-border: #e0f2fe;
+          
+          /* 攸州小镇色系 - 橙色系 */
+          --xiaozhen-primary: #F59E0B;
+          --xiaozhen-primary-light: #fef3c7;
+          --xiaozhen-primary-dark: #d97706;
+          --xiaozhen-accent: #fbbf24;
+          --xiaozhen-accent-light: #fde68a;
+          --xiaozhen-bg: #fffbeb;
+          --xiaozhen-border: #fde68a;
+        }
+
+        /* 胡同小馆主题样式 */
+        .hutong-theme {
+          --primary: var(--hutong-primary);
+          --primary-light: var(--hutong-primary-light);
+          --primary-dark: var(--hutong-primary-dark);
+          --accent: var(--hutong-accent);
+          --accent-light: var(--hutong-accent-light);
+          --bg-color: var(--hutong-bg);
+          --border-color: var(--hutong-border);
+        }
+
+        /* 攸州小镇主题样式 */
+        .xiaozhen-theme {
+          --primary: var(--xiaozhen-primary);
+          --primary-light: var(--xiaozhen-primary-light);
+          --primary-dark: var(--xiaozhen-primary-dark);
+          --accent: var(--xiaozhen-accent);
+          --accent-light: var(--xiaozhen-accent-light);
+          --bg-color: var(--xiaozhen-bg);
+          --border-color: var(--xiaozhen-border);
+        }
+
+        /* 自定义阴影 */
+        .shadow-card {
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .shadow-hover {
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* 主题样式应用 */
+        .hutong-theme .special-header {
+          background: linear-gradient(135deg, #dbeafe, #93c5fd);
+          color: #1e40af;
+        }
+
+        .hutong-theme .week-special-item {
+          background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        }
+
+        .hutong-theme .week-special-item.active {
+          background: linear-gradient(135deg, #93c5fd, #60a5fa);
+          color: white;
+        }
+
+        .hutong-theme .dishes-table th {
+          background-color: #dbeafe;
+          color: #1e40af;
+        }
+
+        .hutong-theme .dishes-table tr:hover {
+          background-color: #eff6ff;
+        }
+
+        .hutong-theme .dish-tag {
+          background: linear-gradient(135deg, #93c5fd, #60a5fa);
+          color: white;
+        }
+
+        .xiaozhen-theme .special-header {
+          background: linear-gradient(135deg, #fef3c7, #fbbf24);
+          color: #d97706;
+        }
+
+        .xiaozhen-theme .week-special-item {
+          background: linear-gradient(135deg, #fffbeb, #fef3c7);
+        }
+
+        .xiaozhen-theme .week-special-item.active {
+          background: linear-gradient(135deg, #fbbf24, #f59e0b);
+          color: white;
+        }
+
+        .xiaozhen-theme .dishes-table th {
+          background-color: #fef3c7;
+          color: #d97706;
+        }
+
+        .xiaozhen-theme .dishes-table tr:hover {
+          background-color: #fffbeb;
+        }
+
+        .xiaozhen-theme .dish-tag {
+          background: linear-gradient(135deg, #fbbf24, #f59e0b);
+          color: white;
+        }
+
+        /* 餐厅信息主题样式 */
+        .hutong-theme .restaurant-name {
+          color: var(--hutong-primary);
+        }
+
+        .hutong-theme .detail-item i {
+          color: var(--hutong-accent);
+        }
+
+        .hutong-theme .restaurant-image-container::before {
+          background: linear-gradient(to bottom, var(--hutong-accent-light), var(--hutong-primary));
+        }
+
+        .xiaozhen-theme .restaurant-name {
+          color: var(--xiaozhen-primary);
+        }
+
+        .xiaozhen-theme .detail-item i {
+          color: var(--xiaozhen-accent);
+        }
+
+        .xiaozhen-theme .restaurant-image-container::before {
+          background: linear-gradient(to bottom, var(--xiaozhen-accent-light), var(--xiaozhen-primary));
+        }
+
+        /* 筛选按钮主题样式 */
+        .hutong-theme .bg-blue-100 {
+          background-color: #dbeafe;
+        }
+
+        .hutong-theme .text-blue-700 {
+          color: #1e40af;
+        }
+
+        .hutong-theme .hover\:bg-blue-200:hover {
+          background-color: #bfdbfe;
+        }
+
+        .hutong-theme .bg-blue-500 {
+          background-color: #3b82f6;
+        }
+
+        .hutong-theme .text-white {
+          color: white;
+        }
+
+        .xiaozhen-theme .bg-orange-100 {
+          background-color: #fef3c7;
+        }
+
+        .xiaozhen-theme .text-orange-700 {
+          color: #d97706;
+        }
+
+        .xiaozhen-theme .hover\:bg-orange-200:hover {
+          background-color: #fde68a;
+        }
+
+        .xiaozhen-theme .bg-orange-500 {
+          background-color: #f59e0b;
+        }
+
+        .xiaozhen-theme .text-white {
+          color: white;
+        }
+
+        /* 菜品表格样式 */
+        .dishes-table {
+          width: 100%;
+          border-collapse: collapse;
+          background: white;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .dishes-table th {
+          background: #f8fafc;
+          padding: 12px 16px;
+          text-align: left;
+          font-weight: 600;
+          font-size: 12px;
+          color: #64748b;
+          border-bottom: 1px solid #e2e8f0;
+        }
+
+        .dishes-table td {
+          padding: 12px 16px;
+          border-bottom: 1px solid #f1f5f9;
+          font-size: 14px;
+        }
+
+        /* 表格容器主题样式 */
+        .hutong-theme .dishes-table-container {
+          border: 1px solid var(--hutong-border);
+        }
+
+        .xiaozhen-theme .dishes-table-container {
+          border: 1px solid var(--xiaozhen-border);
+        }
+
+        /* 餐厅信息边框主题样式 */
+        .hutong-theme .restaurant-image-container::before {
+          background: linear-gradient(to bottom, var(--hutong-accent-light), var(--hutong-primary));
+        }
+
+        .xiaozhen-theme .restaurant-image-container::before {
+          background: linear-gradient(to bottom, var(--xiaozhen-accent-light), var(--xiaozhen-primary));
+        }
+
+        .dishes-table tr:hover {
+          background-color: #eff6ff;
+        }
+
+        .dishes-table th:first-child {
+          width: 80px;
+          text-align: center;
+        }
+
+        .dishes-table td:first-child {
+          text-align: center;
+          padding: 10px;
+        }
+
+        .dish-preview-image {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          border-radius: 6px;
+          width: 50px;
+          height: 40px;
+          font-size: 12px;
+          margin: 0 auto;
+        }
+
+        .dish-tags {
+          display: flex;
+          gap: 4px;
+          flex-wrap: wrap;
+        }
+
+        .dish-tag {
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-size: 10px;
+          font-weight: 500;
+          background: #e2e8f0;
+          color: #475569;
+        }
+
+        .action-btn {
+          padding: 4px 8px;
+          border: none;
+          border-radius: 4px;
+          background: #3b82f6;
+          color: white;
+          font-size: 11px;
+          cursor: pointer;
+          transition: background-color 0.2s;
+        }
+
+        .action-btn:hover {
+          background: #2563eb;
+        }
+      </style>
       
-      <!-- 胡同小馆页面内容 -->
-      <div id="hutong-content" style="display: none;"></div>
+      <!-- 筛选条件 -->
+      <div class="bg-white rounded-xl border border-neutral-200 shadow-card p-4 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- 口味标签和按钮区域 -->
+          <div class="flex items-center justify-between">
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-neutral-700 mb-3">口味标签</label>
+              <div class="flex gap-2 overflow-x-auto pb-2">
+                <button class="bg-gradient-to-r from-green-100 to-green-200 text-green-700 text-sm px-4 py-2 rounded-full hover:from-green-200 hover:to-green-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🍃 开胃</button>
+                <button class="bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-sm px-4 py-2 rounded-full hover:from-blue-200 hover:to-blue-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">💧 清淡</button>
+                <button class="bg-gradient-to-r from-pink-100 to-pink-200 text-pink-700 text-sm px-4 py-2 rounded-full hover:from-pink-200 hover:to-pink-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🏃‍♀️ 减脂</button>
+                <button class="bg-gradient-to-r from-orange-100 to-orange-200 text-orange-700 text-sm px-4 py-2 rounded-full hover:from-orange-200 hover:to-orange-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🍯 滋补</button>
+                <button class="bg-gradient-to-r from-red-100 to-red-200 text-red-700 text-sm px-4 py-2 rounded-full hover:from-red-200 hover:to-red-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🌶️ 爱辣</button>
+                <button class="bg-gradient-to-r from-amber-100 to-amber-200 text-amber-700 text-sm px-4 py-2 rounded-full hover:from-amber-200 hover:to-amber-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">🥩 无肉不欢</button>
+                <button class="bg-gradient-to-r from-yellow-100 to-yellow-200 text-yellow-700 text-sm px-4 py-2 rounded-full hover:from-yellow-200 hover:to-yellow-300 transition-all duration-300 shadow-sm hover:shadow-md font-medium whitespace-nowrap">✨ 想尝鲜？</button>
+              </div>
+            </div>
+            <div class="ml-6 flex-shrink-0 self-end pb-2">
+              <button class="hutong-theme flex items-center bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium whitespace-nowrap">
+                <i class="ri-refresh-line mr-2"></i>
+                <span>智能推荐</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <!-- 攸州小镇页面内容 -->
-      <div id="xiaozhen-content" style="display: none;"></div>
+      <!-- 推荐餐厅列表 -->
+      <div class="mb-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-neutral-800">为你推荐的餐厅</h3>
+          <button class="text-green-600 text-sm font-medium flex items-center hover:underline">
+            <span>查看全部</span>
+            <i class="ri-arrow-right-s-line ml-1.5"></i>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- 湘悦楼 -->
+          <div class="bg-white rounded-xl border border-neutral-200 shadow-card overflow-hidden hover:shadow-hover transition-custom">
+            <div class="w-full h-40 overflow-hidden">
+              <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="湘悦楼餐厅" src="https://picsum.photos/id/292/400/300">
+            </div>
+            
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-neutral-800 font-semibold">湘悦楼</h4>
+                <div class="flex items-center text-neutral-500 text-xs">
+                  <i class="ri-map-pin-line mr-1"></i>
+                  <span>500米</span>
+                </div>
+              </div>
+              
+              <p class="text-neutral-500 text-sm mb-4">人均 ¥85 | 湘菜 | 营业中</p>
+              
+              <h5 class="text-neutral-700 text-sm font-medium mb-2">推荐菜品</h5>
+              
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-gray-50 rounded-lg p-3">
+                  <div class="w-full h-20 rounded-lg overflow-hidden mb-2">
+                    <img class="w-full h-full object-cover" alt="剁椒鱼头" src="https://picsum.photos/id/1080/200/200">
+                  </div>
+                  <p class="text-neutral-800 text-sm font-medium mb-1 truncate">剁椒鱼头</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-green-600 text-sm font-bold">¥68</span>
+                    <div class="flex items-center text-neutral-500 text-xs">
+                      <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                      <span>420kcal</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-3">
+                  <div class="w-full h-20 rounded-lg overflow-hidden mb-2">
+                    <img class="w-full h-full object-cover" alt="麻婆豆腐" src="https://picsum.photos/id/102/200/200">
+                  </div>
+                  <p class="text-neutral-800 text-sm font-medium mb-1 truncate">麻婆豆腐</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-green-600 text-sm font-bold">¥28</span>
+                    <div class="flex items-center text-neutral-500 text-xs">
+                      <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                      <span>310kcal</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="w-full py-2 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-custom">
+                查看完整菜单
+              </button>
+            </div>
+          </div>
+          
+          <!-- 沪上小馆 -->
+          <div class="bg-white rounded-xl border border-neutral-200 shadow-card overflow-hidden hover:shadow-hover transition-custom">
+            <div class="w-full h-40 overflow-hidden">
+              <img class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" alt="沪上小馆餐厅" src="https://picsum.photos/id/431/400/300">
+            </div>
+            
+            <div class="p-5">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="text-neutral-800 font-semibold">沪上小馆</h4>
+                <div class="flex items-center text-neutral-500 text-xs">
+                  <i class="ri-map-pin-line mr-1"></i>
+                  <span>800米</span>
+                </div>
+              </div>
+              
+              <p class="text-neutral-500 text-sm mb-4">人均 ¥75 | 本帮菜 | 营业中</p>
+              
+              <h5 class="text-neutral-700 text-sm font-medium mb-2">推荐菜品</h5>
+              
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-gray-50 rounded-lg p-3">
+                  <div class="w-full h-20 rounded-lg overflow-hidden mb-2">
+                    <img class="w-full h-full object-cover" alt="清蒸鲈鱼" src="https://picsum.photos/id/1080/200/200">
+                  </div>
+                  <p class="text-neutral-800 text-sm font-medium mb-1 truncate">清蒸鲈鱼</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-green-600 text-sm font-bold">¥88</span>
+                    <div class="flex items-center text-neutral-500 text-xs">
+                      <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                      <span>320kcal</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-lg p-3">
+                  <div class="w-full h-20 rounded-lg overflow-hidden mb-2">
+                    <img class="w-full h-full object-cover" alt="红烧肉" src="https://picsum.photos/id/292/200/200">
+                  </div>
+                  <p class="text-neutral-800 text-sm font-medium mb-1 truncate">红烧肉</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-green-600 text-sm font-bold">¥68</span>
+                    <div class="flex items-center text-neutral-500 text-xs">
+                      <i class="ri-bolt-line text-amber-500 mr-1"></i>
+                      <span>520kcal</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="w-full py-2 border border-green-600 text-green-600 text-sm font-medium rounded-lg hover:bg-green-50 transition-custom">
+                查看完整菜单
+              </button>
+            </div>
+          </div>
+          
+          <!-- 饮食小Tips -->
+          <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl shadow-card overflow-hidden hover:shadow-hover transition-custom">
+            <div class="h-16 flex items-center justify-center">
+              <h4 class="text-white text-lg font-bold text-center">饮食小Tips</h4>
+            </div>
+            
+            <div class="bg-white p-5 h-full flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="bg-green-50 rounded-lg p-4 flex-1">
+                  <h6 class="text-green-700 text-sm font-medium mb-2 flex items-center">🚫 食物相克</h6>
+                  <p class="text-neutral-600 text-sm leading-relaxed">牛奶 + 橙子 = 消化不良</p>
+                  <p class="text-neutral-500 text-xs leading-relaxed mt-1">牛奶中的蛋白质与橙子中的果酸结合会凝固，影响消化吸收</p>
+                </div>
+                
+                <div class="bg-orange-50 rounded-lg p-4 flex-1">
+                  <h6 class="text-orange-700 text-sm font-medium mb-2 flex items-center">💊 用药提醒</h6>
+                  <p class="text-neutral-600 text-sm leading-relaxed">头孢类药物 + 酒精 = 双硫仑反应</p>
+                  <p class="text-neutral-500 text-xs leading-relaxed mt-1">服药期间饮酒可能导致面部潮红、心悸、呼吸困难等严重反应</p>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4 flex-1">
+                  <h6 class="text-blue-700 text-sm font-medium mb-2 flex items-center">🍎 健康建议</h6>
+                  <p class="text-neutral-600 text-sm leading-relaxed">降压药 + 西柚 = 血压过低</p>
+                  <p class="text-neutral-500 text-xs leading-relaxed mt-1">西柚会抑制药物代谢，导致药效增强，可能引起头晕、乏力等不适</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    <!-- 胡同小馆页面内容 -->
+    <div id="hutong-content" style="display: none;"></div>
+    
+    <!-- 攸州小镇页面内容 -->
+    <div id="xiaozhen-content" style="display: none;"></div>
+  </div>
   </main>
 
   <!-- 引入外部JavaScript文件 -->
